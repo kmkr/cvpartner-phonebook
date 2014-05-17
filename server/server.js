@@ -38,8 +38,6 @@ var requestOpts = {
     }
 };
 
-console.log(requestOpts)
-
 var fetchMockUsers = function() {
     var deferred = q.defer();
     deferred.resolve([
