@@ -12,6 +12,8 @@ var options = {
 var files = new static_server.Server('./src');
 
 https.createServer(options, function(req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
     if (req.url === '/api/users') {
         fetchUsers().then(function(users) {
             res.end(JSON.stringify(users.map(function(user) {
