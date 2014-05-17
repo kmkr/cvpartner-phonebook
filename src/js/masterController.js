@@ -8,6 +8,8 @@ angular.module('phonebook')
     DataService.fetchUsers().then(function(data) {
         $scope.model.spinner = false;
         $scope.model.items = data;
+    }, function(error) {
+        $scope.error = error;
     });
 
 }]);

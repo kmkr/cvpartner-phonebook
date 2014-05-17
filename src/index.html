@@ -23,6 +23,7 @@
             <ons-navigator title="People">
                 <ons-page class="center">
                     <div ng-controller="MasterController">
+                        {{error}}
                         <div class="fa fa-spin fa-spinner" ng-if="model.spinner"></div>
                         <ons-list ng-if="!model.spinner">
                             <ons-list-item
