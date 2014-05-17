@@ -63,9 +63,20 @@ module.exports = function(grunt) {
         },
         copy: {
             cordova: {
-                files: [
-                    { expand: true, src: ['**'], dest: '<%= pkg.path %>/www/', cwd: 'src/' }
-                ]
+                options:  {
+                    process: function(content, path) {
+                        if ('src/js/config.js' === path) {
+                            //When running in an emulator, host will be different
+                            return content.replace('localhost:8000', '10.0.2.2:8000');
+                        }
+                    }
+                },
+                files: [{
+                    expand: true,
+                    src: ['**'],
+                    dest: '<%= pkg.path %>/www/',
+                    cwd: 'src/'
+                }]
             }
         },
         cordovacli: {

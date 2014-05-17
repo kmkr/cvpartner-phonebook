@@ -1,11 +1,11 @@
 angular.module('phonebook')
-.service('DataService', ['$http', '$q', function($http, $q) {
+.service('DataService', ['$http', '$q', 'config', function($http, $q, config) {
 
     this.fetchUsers = function() {
         var deferred = $q.defer();
 
         $http
-            .get('https://localhost:8000/api/users')
+            .get('https://' + config.apiHost + '/api/users')
             .then(function(result) {
                 deferred.resolve(result.data);
             }, function(error) {
