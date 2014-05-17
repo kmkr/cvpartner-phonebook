@@ -1,0 +1,24 @@
+{
+  "author": "Ivar Nilsen",
+  "name": "cvpartner-phonebook",
+  "description": "Phonebook",
+  "version": "0.0.1",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/ivarni/cvpartner-phonebook/master/LICENSE"
+    }
+  ],
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.8.3",
+    "karma": "^0.12.16",
+    "karma-growl-reporter": "^0.1.1",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4"
+  }
+}

@@ -6,7 +6,8 @@ a phonebook of all listed users.
 
 requirements
 ============
-Node.js
+Node.js (http://nodejs.org/)
+PhantomJS (http://phantomjs.org/)
 
 setup
 =====
