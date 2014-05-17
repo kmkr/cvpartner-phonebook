@@ -13,3 +13,8 @@ setup
 =====
 - npm install -g grunt && npm install -g grunt-cli
 - npm install
+- create a file *server/api-token* containing the auth token for the CV API
+- create a file *server/api-hostname* containing the hostname of the CV API
+- generate a self-signed sertificate
+  - openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -keyout serverkey.pem -out servercert.pem
+  - place in 'server/ssh' folder.

@@ -1,1 +1,6 @@
 node_modules
+server/api-token
+server/api-hostname
+server/ssh/serverkey.pem
+server/ssh/servercert.pem
+server/ssh/.rnd

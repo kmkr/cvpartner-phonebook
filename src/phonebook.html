@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="phonebook">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Phonebook</title>
+
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsen/css/topcoat-mobile-onsen-ios7.css">
+  <link rel="stylesheet" href="styles/phonebook.css"/>
+
+  <script src="lib/onsen/js/angular/angular.js"></script>
+  <script src="lib/onsen/js/onsenui.js"></script>
+  <script src="js/phonebook.js"></script>
+  <script src="js/masterController.js"></script>
+  <script src="js/dataService.js"></script>
+
+</head>
+
+    <body>
+        <ons-screen>
+            <ons-navigator title="People">
+                <ons-page class="center">
+                    <div ng-controller="MasterController">
+                        <div class="fa fa-spin fa-spinner" ng-if="model.spinner"></div>
+                        <ons-list ng-if="!model.spinner">
+                            <ons-list-item
+                                    class="topcoat-list__item--tappable topcoat-list__item__line-height"
+                                    ng-repeat="item in model.items">
+                                <ons-row>
+                                    <ons-col size="10">
+                                        <ons-icon
+                                                icon="smile-o"
+                                                fixed-width="true">
+                                        </ons-icon>
+                                    </ons-col>
+                                    <ons-col class="left">
+                                        {{item.name}}
+                                    </ons-col>
+                                </ons-row>
+                            </ons-list-item>
+                        </ons-list>
+                    </div>
+                </ons-page>
+            </ons-navigator>
+        </ons-screen>
+    </body>
+
+</html>
