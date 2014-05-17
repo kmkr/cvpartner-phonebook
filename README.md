@@ -23,3 +23,15 @@ run
 ===
 - node server/server.js starts a server on localhost:8000
 - node server/server.js dev starts a server on localhost:8000 with mock-data
+
+emulate android
+===============
+- Install Android SDK
+- Add /tools and /platform-tools to PATH
+- Set ANDROID_HOME to sdk folder
+- npm install -g cordova
+- android list targets
+- android create avd -n <name> -t <targetID>
+- grunt dist
+- cd cordova-phonebook
+- cordova run

@@ -3,10 +3,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-cordovacli');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('default', ['jshint', 'karma:unit']);
 
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         src: {
             js: ['src/**/*.js'],
             specs: ['test/**/*.spec.js']
@@ -48,6 +52,84 @@ module.exports = function(grunt) {
                 eqnull: true,
                 globals: {}
             }
+        },
+        clean: {
+            cordova: {
+                force: true,
+                files: [{
+                    dist: '<%= pkg.path %>',
+                }],
+            }
+        },
+        copy: {
+            cordova: {
+                files: [
+                    { expand: true, src: ['**'], dest: '<%= pkg.path %>/www/', cwd: 'src/' }
+                ]
+            }
+        },
+        cordovacli: {
+            options: {
+                path: '<%= pkg.path %>'
+            },
+            cordova: {
+                options: {
+                    command: ['create', 'platform', 'plugin', 'build'],
+                    platforms: ['android'],
+                    plugins: ['device', 'dialogs'],
+                    path: '<%= pkg.path %>',
+                    id: '<%= pkg.id %>',
+                    name: '<%= pkg.name %>'
+                }
+            },
+            create: {
+                options: {
+                    command: 'create',
+                    id: '<%= pkg.id %>',
+                    name: '<%= pkg.name %>'
+                }
+            },
+            add_platforms: {
+                options: {
+                    command: 'platform',
+                    action: 'add',
+                    platforms: ['android']
+                }
+            },
+            add_plugins: {
+                options: {
+                    command: 'plugin',
+                    action: 'add',
+                    plugins: [
+                        'battery-status',
+                        'camera',
+                        'console',
+                        'contacts',
+                        'device',
+                        'device-motion',
+                        'device-orientation',
+                        'dialogs',
+                        'file',
+                        'geolocation',
+                        'globalization',
+                        'inappbrowser',
+                        'media',
+                        'media-capture',
+                        'network-information',
+                        'splashscreen',
+                        'vibration'
+                    ]
+                }
+            },
+            build_android: {
+                options: {
+                    command: 'build',
+                    platforms: ['android']
+                }
+            },
         }
+
     });
+
+    grunt.registerTask('dist', ['clean:cordova', 'cordovacli:cordova', 'copy:cordova']);
 };

@@ -1,4 +1,5 @@
 node_modules
+cordova-phonebook
 server/api-token
 server/api-hostname
 server/ssh/serverkey.pem
