@@ -18,3 +18,8 @@ setup
 - generate a self-signed sertificate
   - openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -keyout serverkey.pem -out servercert.pem
   - place in 'server/ssh' folder.
+
+run
+===
+- node server/server.js starts a server on localhost:8000
+- node server/server.js dev starts a server on localhost:8000 with mock-data
