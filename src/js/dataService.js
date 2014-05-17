@@ -5,11 +5,12 @@ angular.module('phonebook')
         var deferred = $q.defer();
 
         $http
-            .get('/api/users')
+            .get('https://localhost:8000/api/users')
             .then(function(result) {
                 deferred.resolve(result.data);
             }, function(error) {
                 console.log(error);
+                deferred.reject(error);
             });
 
         return deferred.promise;
