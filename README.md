@@ -27,8 +27,8 @@ run
 emulate android
 ===============
 - Install Android SDK
-- Add /tools and /platform-tools to PATH
 - Set ANDROID_HOME to sdk folder
+- Add /tools and /platform-tools to PATH
 - npm install -g cordova
 - android list targets
 - android create avd -n <name> -t <targetID>
