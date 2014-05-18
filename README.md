@@ -32,6 +32,9 @@ emulate android
 - npm install -g cordova
 - android list targets
 - android create avd -n <name> -t <targetID>
+
+run emulation
+=============
 - grunt dist
 - cd cordova-phonebook
 - cordova run
