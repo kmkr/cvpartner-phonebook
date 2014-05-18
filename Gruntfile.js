@@ -6,6 +6,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-cordovacli');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-connect-proxy');
 
     grunt.registerTask('default', ['jshint', 'karma:unit']);
 
@@ -82,6 +84,41 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        connect: {
+            server: {
+              options: {
+                port: 9000,
+                base: 'src',
+                logger: 'dev',
+                middleware: function (connect, options) {
+                 var proxy = require('grunt-connect-proxy/lib/utils').proxyRequest;
+                 return [
+                    // Include the proxy first
+                    proxy,
+                    // Serve static files.
+                    connect.static(options.base[0]),
+                    // Make empty directories browsable.
+                    connect.directory(options.base)
+                    ];
+                }
+            },
+            proxies: [
+            {
+                context: '/api',
+                host: grunt.file.read('server/api-hostname').replace(/[\r\n]/g, ''),
+                port: 443,
+                https: true,
+                rewrite: {
+                    "^/api/users": "/api/v1/users"
+                },
+                rejectUnauthorized: false,
+                headers: {
+                    Authorization: 'Token token="' + (''+grunt.file.read('server/api-token')).replace(/[\r\n]/g, '') + '"'
+                }
+            }
+            ]
+        }
+        },
         cordovacli: {
             options: {
                 path: '<%= pkg.path %>'
@@ -146,4 +183,11 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('dist', ['clean:cordova', 'cordovacli:cordova', 'copy:cordova']);
+        grunt.registerTask('server', function (target) {
+        grunt.task.run([
+            'configureProxies:server',
+            'connect:server',
+            'watch'
+        ]);
+    });
 };

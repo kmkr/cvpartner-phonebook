@@ -15,14 +15,11 @@ setup
 - npm install
 - create a file *server/api-token* containing the auth token for the CV API
 - create a file *server/api-hostname* containing the hostname of the CV API
-- generate a self-signed sertificate
-  - openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -keyout serverkey.pem -out servercert.pem
-  - place in 'server/ssh' folder.
 
 run
 ===
-- node server.js starts a server on localhost:8000
-- node server.js dev starts a server on localhost:8000 with mock-data
+- grunt server starts a server on localhost:8000
+- Enable mockdata by changing `phonebook` in `body ng-app="phonebook"` with `phonebookMock`
 
 emulate android
 ===============
