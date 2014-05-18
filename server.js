@@ -1,7 +1,8 @@
 var https = require('https');
 var fs = require('fs');
 var q = require('q');
-var static_server = require('node-static');
+
+var express = require('express');
 
 //openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -keyout serverkey.pem -out servercert.pem
 var options = {
@@ -9,26 +10,20 @@ var options = {
     cert: fs.readFileSync('server/ssh/servercert.pem')
 };
 
-var files = new static_server.Server('./src');
+var app = express();
+app.get('/api/users', function(req, res) {
+    fetchUsers().then(function(users) {
+        res.send(JSON.stringify(users.map(function(user) {
+            return {
+                name: user.name,
+                email: user.email
+            };
+        })));
+    });
+});
+app.use(express.static(__dirname + '/src'));
 
-https.createServer(options, function(req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With");
-    if (req.url === '/api/users') {
-        fetchUsers().then(function(users) {
-            res.end(JSON.stringify(users.map(function(user) {
-                return {
-                    name: user.name,
-                    email: user.email
-                };
-            })));
-        });
-    } else {
-        req.addListener('end', function() {
-            files.serve(req, res);
-        }).resume();
-    }
-}).listen(8000);
+https.createServer(options, app).listen(443);
 
 var requestOpts = {
     hostname: (''+fs.readFileSync('server/api-hostname')).replace(/[\r\n]/g, ''),

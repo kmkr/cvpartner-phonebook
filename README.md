@@ -21,8 +21,8 @@ setup
 
 run
 ===
-- node server/server.js starts a server on localhost:8000
-- node server/server.js dev starts a server on localhost:8000 with mock-data
+- node server.js starts a server on localhost:8000
+- node server.js dev starts a server on localhost:8000 with mock-data
 
 emulate android
 ===============
