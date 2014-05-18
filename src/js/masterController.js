@@ -4,7 +4,8 @@ angular.module('phonebook')
     $scope.model = {
         items: [],
         spinner: true
-    }
+    };
+
     DataService.fetchUsers().then(function(data) {
         $scope.model.spinner = false;
         $scope.model.items = data;

@@ -38,7 +38,8 @@ module.exports = function(grunt) {
             files: [
                 'gruntFile.js',
                 '<%= src.js %>',
-                '<%= src.specs %>'
+                '<%= src.specs %>',
+                '!**/lib/**/*.js'
             ],
             options: {
                 curly: true,
