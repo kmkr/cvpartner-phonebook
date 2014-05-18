@@ -3,11 +3,11 @@ module.exports = function(config) {
         basePath: '../..',
         frameworks: ['jasmine'],
         files: [
+            '**/angular.js',
+            'src/lib/**/*.js',
+            '**/phonebook.js',
             'src/**/*.js',
             'test/unit/**/*.spec.js'
-        ],
-        exclude: [
-            '**/app.js'
         ],
         reporters: ['progress', 'growl'],
         port: 9876,
