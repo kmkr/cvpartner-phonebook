@@ -2,12 +2,24 @@ cvpartner-phonebook
 ===================
 
 Explore public API of https://[redacted].cvpartner.no/help/api# to create
-a phonebook of all listed users.
+a phonebook of all listed users. 
 
-requirements
-============
+software
+========
+
+When using a browser
+
 - Node.js (http://nodejs.org/)
-- PhantomJS (http://phantomjs.org/)
+- PhantomJS for running tests (http://phantomjs.org/)
+- Openssl to enable SSL on local webserver (*optional*)
+
+When using a phone
+
+In addition to the ones for a browser:
+
+- Java (https://www.java.com/en/download/)
+- Ant (http://ant.apache.org/bindownload.cgi)
+- Android SDK (http://developer.android.com/sdk/index.html)
 
 setup
 =====
@@ -15,7 +27,7 @@ setup
 - npm install
 - create a file *server/api-token* containing the auth token for the CV API
 - create a file *server/api-hostname* containing the hostname of the CV API
-- generate a self-signed sertificate
+- *Optional*: generate a self-signed sertificate
   - openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -keyout serverkey.pem -out servercert.pem
   - place in 'server/ssh' folder.
 
@@ -38,3 +50,9 @@ run emulation
 - grunt dist
 - cd cordova-phonebook
 - cordova run
+
+suggested tasks
+===============
+
+1. Create a list of phone numbers. Let the user filter the list both by the owner's partial name and phone number.
+2. Make each name clickable and open a new view containing user data. 
