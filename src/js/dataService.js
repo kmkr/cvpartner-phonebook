@@ -5,7 +5,7 @@ angular.module('phonebook')
         var deferred = $q.defer();
 
         $http
-            .get('https://' + config.apiHost + '/api/users')
+            .get('http://' + config.apiHost + ':8080/api/users')
             .then(function(result) {
                 deferred.resolve(result.data);
             }, function(error) {

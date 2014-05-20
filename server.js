@@ -1,13 +1,8 @@
 var https = require('https');
+var http = require('http');
 var fs = require('fs');
 var q = require('q');
 var express = require('express');
-
-//openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -keyout serverkey.pem -out servercert.pem
-var options = {
-    key: fs.readFileSync('server/ssh/serverkey.pem'),
-    cert: fs.readFileSync('server/ssh/servercert.pem')
-};
 
 var app = express();
 app.get('/api/users', function(req, res) {
@@ -21,7 +16,8 @@ app.get('/api/users', function(req, res) {
     });
 });
 app.use(express.static(__dirname + '/src'));
-https.createServer(options, app).listen(443);
+http.createServer(app).listen(8080);
+console.log('Started HTTP server on port 8080');
 
 var fetchUsers = function() {
     var requestOpts = {

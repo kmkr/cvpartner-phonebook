@@ -2,7 +2,7 @@ cvpartner-phonebook
 ===================
 
 Explore public API of https://[redacted].cvpartner.no/help/api# to create
-a phonebook of all listed users. 
+a phonebook of all listed users.
 
 software
 ========
@@ -27,14 +27,11 @@ setup
 - npm install
 - create a file *server/api-token* containing the auth token for the CV API
 - create a file *server/api-hostname* containing the hostname of the CV API
-- *Optional*: generate a self-signed sertificate
-  - openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -keyout serverkey.pem -out servercert.pem
-  - place in 'server/ssh' folder.
 
 run
 ===
-- node server.js starts a server on localhost:8000
-- node server.js dev starts a server on localhost:8000 with mock-data
+- node server.js starts a server on localhost:8080
+- node server.js dev starts a server on localhost:8080 with mock-data
 
 emulate android
 ===============
@@ -55,4 +52,5 @@ suggested tasks
 ===============
 
 1. Create a list of phone numbers. Let the user filter the list both by the owner's partial name and phone number.
-2. Make each name clickable and open a new view containing user data. 
+2. Make each name clickable and open a new view containing user data.
+3. Buy the organizers a beer.
