@@ -11,7 +11,6 @@ When using a browser
 
 - Node.js (http://nodejs.org/)
 - PhantomJS for running tests (http://phantomjs.org/)
-- Openssl to enable SSL on local webserver (*optional*)
 
 When using a phone
 
