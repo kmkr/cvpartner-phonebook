@@ -1,3 +1,13 @@
+if (!process.env.CVPARTNER_HOSTNAME) {
+    console.log('Please set the CVPARTNER_HOSTNAME environment variable');
+    return;
+}
+if (!process.env.CVPARTNER_TOKEN) {
+    console.log('Please set the CVPARTNER_TOKEN environment variable');
+    return;
+}
+
+
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
@@ -7,6 +17,7 @@ var express = require('express');
 var app = express();
 app.get('/api/users', function(req, res) {
     fetchUsers().then(function(users) {
+        console.log('Fetched %s users', users.length);
         res.send(JSON.stringify(users.map(function(user) {
             return {
                 name: user.name,
@@ -19,14 +30,16 @@ app.use(express.static(__dirname + '/src'));
 http.createServer(app).listen(8080);
 console.log('Started HTTP server on port 8080');
 
+
 var fetchUsers = function() {
+    console.log('Fetching production data');
     var requestOpts = {
-        hostname: (''+fs.readFileSync('server/api-hostname')).replace(/[\r\n]/g, ''),
+        hostname: process.env.CVPARTNER_HOSTNAME,
         port: 443,
         path: '/api/v1/users',
         method: 'GET',
         headers: {
-            Authorization: 'Token token="' + (''+fs.readFileSync('server/api-token')).replace(/[\r\n]/g, '') + '"'
+            Authorization: 'Token token="' + process.env.CVPARTNER_TOKEN + '"'
         }
     };
     var deferred = q.defer();
@@ -49,6 +62,7 @@ var fetchUsers = function() {
 };
 
 var fetchMockUsers = function() {
+    console.log('Fetching mock data');
     var deferred = q.defer();
     deferred.resolve([
         { name: 'Borghild Balder', email: 'Borghild.Balder@foo.com' },
