@@ -61,7 +61,7 @@ suggested tasks
 masterdata API
 ==============
 
-These are examples.
+These are just examples, please feel free to explore the API for other kind of data.
 
 https://[redacted].cvpartner.no/api/v1/masterdata/certifications/name
 https://[redacted].cvpartner.no/api/v1/masterdata/project_experiences/industry
