@@ -2,7 +2,7 @@ cvpartner-phonebook
 ===================
 
 Explore public API of https://[redacted].cvpartner.no/help/api# to create
-a phonebook of all listed users. 
+a phonebook of all listed users.
 
 software
 ========
@@ -11,7 +11,6 @@ When using a browser
 
 - Node.js (http://nodejs.org/)
 - PhantomJS for running tests (http://phantomjs.org/)
-- Openssl to enable SSL on local webserver (*optional*)
 
 When using a phone
 
@@ -25,16 +24,13 @@ setup
 =====
 - npm install -g grunt && npm install -g grunt-cli
 - npm install
-- create a file *server/api-token* containing the auth token for the CV API
-- create a file *server/api-hostname* containing the hostname of the CV API
-- *Optional*: generate a self-signed sertificate
-  - openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -keyout serverkey.pem -out servercert.pem
-  - place in 'server/ssh' folder.
+- set the environment value CVPARTNER_TOKEN to the auth token for the CV API
+- set the environment value CVPARTNER_HOSTNAME the hostname of the CV API
 
 run
 ===
-- node server.js starts a server on localhost:8000
-- node server.js dev starts a server on localhost:8000 with mock-data
+- node server.js starts a server on localhost:8080
+- node server.js dev starts a server on localhost:8080 with mock-data
 
 emulate android
 ===============
@@ -57,6 +53,7 @@ suggested tasks
 1. Create a list of phone numbers. Let the user filter the list both by the owner's partial name and phone number.
 2. Make each name clickable and open a new view containing user data. 
 3. The API supports fetching of masterdata, such as user expertise, certifications, categories and tags. Create statistics based on some of this data, either in table form or by using graphs.
+4. Buy the organizers a beer.
 
 masterdata API
 ==============
