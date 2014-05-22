@@ -51,5 +51,16 @@ suggested tasks
 ===============
 
 1. Create a list of phone numbers. Let the user filter the list both by the owner's partial name and phone number.
-2. Make each name clickable and open a new view containing user data.
-3. Buy the organizers a beer.
+2. Make each name clickable and open a new view containing user data. 
+3. The API supports fetching of masterdata, such as user expertise, certifications, categories and tags. Create statistics based on some of this data, either in table form or by using graphs.
+4. Buy the organizers a beer.
+
+masterdata API
+==============
+
+These are just examples, please feel free to explore the API for other kind of data.
+
+https://[redacted].cvpartner.no/api/v1/masterdata/certifications/name
+https://[redacted].cvpartner.no/api/v1/masterdata/project_experiences/industry
+https://[redacted].cvpartner.no/api/v1/masterdata/technologies/category
+https://[redacted].cvpartner.no/api/v1/masterdata/technologies/category/52dd823e2f274f779b000003/tags
