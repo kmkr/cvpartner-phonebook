@@ -21,7 +21,8 @@ app.get('/api/users', function(req, res) {
         res.send(JSON.stringify(users.map(function(user) {
             return {
                 name: user.name,
-                email: user.email
+                email: user.email,
+                telephone: user.telephone
             };
         })));
     });
@@ -65,12 +66,12 @@ var fetchMockUsers = function() {
     console.log('Fetching mock data');
     var deferred = q.defer();
     deferred.resolve([
-        { name: 'Borghild Balder', email: 'Borghild.Balder@foo.com' },
-        { name: 'Gandalf Ask', email: 'Gandalf.Ask@foo.com' },
-        { name: 'Hel Gerd', email: 'Hel.Gerd@foo.com' },
-        { name: 'Thor Vidar', email: 'Thor.Vidar@foo.com' },
-        { name: 'Sif Oden', email: 'Sif.Oden@foo.com' },
-        { name: 'Sigurd Borghildr', email: 'Sigurd.Borghildr@foo.com' }
+        { name: 'Borghild Balder', email: 'Borghild.Balder@foo.com', telephone: '480 47 878' },
+        { name: 'Gandalf Ask', email: 'Gandalf.Ask@foo.com', telephone: '901 52 711' },
+        { name: 'Hel Gerd', email: 'Hel.Gerd@foo.com', telephone: '98665838' },
+        { name: 'Thor Vidar', email: 'Thor.Vidar@foo.com', telephone: '' },
+        { name: 'Sif Oden', email: 'Sif.Oden@foo.com', telephone: '+47 926 17 422' },
+        { name: 'Sigurd Borghildr', email: 'Sigurd.Borghildr@foo.com', telephone: '+47-92663081' }
     ]);
     return deferred.promise;
 };
