@@ -52,8 +52,7 @@ suggested tasks
 
 1. Create a list of phone numbers. Let the user filter the list both by the owner's partial name and phone number.
 2. Make each name clickable and open a new view containing user data. 
-Create statistics based on some of this data, either in table form or by using graphs.
-3. The API supports filtering across relations in the db. Use this to create statistics. E.g. "who knows JavaScript?"
+3. The API supports filtering across relations in the db. Use this to create statistics, either in table form or by using graphs. E.g. "who knows JavaScript?"
 4. The API supports fetching of masterdata, such as user expertise, certifications, categories and tags. Experiment with this data.
 5. Buy the organizers a beer.
 
