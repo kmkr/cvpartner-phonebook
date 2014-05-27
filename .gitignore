@@ -2,3 +2,4 @@ node_modules
 cordova-phonebook
 server/api-token
 server/api-hostname
+vars.bat

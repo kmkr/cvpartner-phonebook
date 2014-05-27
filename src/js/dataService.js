@@ -16,4 +16,19 @@ angular.module('phonebook')
         return deferred.promise;
     };
 
+    this.fetchCategory = function(category) {
+        var deferred = $q.defer();
+
+        $http
+            .get('http://' + config.apiHost + ':8080/api/categories/' + category)
+            .then(function(result) {
+                deferred.resolve(result.data);
+            }, function(error) {
+                console.log(error);
+                deferred.reject(error);
+            });
+
+        return deferred.promise;
+    };
+
 }]);

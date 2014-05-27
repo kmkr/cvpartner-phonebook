@@ -15,38 +15,31 @@
   <script src="js/phonebook.js"></script>
   <script src="js/config.js"></script>
   <script src="js/masterController.js"></script>
+  <script src="js/categoriesController.js"></script>
   <script src="js/dataService.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 </head>
 
-    <body>
-        <ons-screen>
-            <ons-navigator title="People">
-                <ons-page class="center">
-                    <div ng-controller="MasterController">
-                        {{error}}
-                        <ons-icon icon="spinner" spin="true" ng-if="model.spinner"></ons-icon>
-                        <ons-list ng-if="!model.spinner">
-                            <ons-list-item
-                                    class="topcoat-list__item--tappable topcoat-list__item__line-height"
-                                    ng-repeat="item in model.items">
-                                <ons-row>
-                                    <ons-col size="10">
-                                        <ons-icon
-                                                icon="smile-o"
-                                                fixed-width="true">
-                                        </ons-icon>
-                                    </ons-col>
-                                    <ons-col class="left">
-                                        {{item.name}}
-                                    </ons-col>
-                                </ons-row>
-                            </ons-list-item>
-                        </ons-list>
-                    </div>
-                </ons-page>
-            </ons-navigator>
-        </ons-screen>
-    </body>
+<body>
+  <ons-screen>
+  <ons-navigator
+    title="Foo!"
+    right-button-icon="fa fa-lg fa-bars">
+
+    <ons-page class="center">
+        <ons-button 
+            ng-click="ons.navigator.pushPage('templates/_users.html')">
+            Users
+        </ons-button>
+        <ons-button 
+            ng-click="ons.navigator.pushPage('templates/_categories.html')">
+            Categories
+        </ons-button>
+    </ons-page>
+  </ons-navigator>  
+
+  </ons-screen>
+</body>
 
 </html>
