@@ -52,8 +52,17 @@ suggested tasks
 
 1. Create a list of phone numbers. Let the user filter the list both by the owner's partial name and phone number.
 2. Make each name clickable and open a new view containing user data. 
-3. The API supports fetching of masterdata, such as user expertise, certifications, categories and tags. Create statistics based on some of this data, either in table form or by using graphs.
-4. Buy the organizers a beer.
+Create statistics based on some of this data, either in table form or by using graphs.
+3. The API supports filtering across relations in the db. Use this to create statistics. E.g. "who knows JavaScript?"
+4. The API supports fetching of masterdata, such as user expertise, certifications, categories and tags. Experiment with this data.
+5. Buy the organizers a beer.
+
+filtering across relations
+==========================
+
+This is just one example, use the existing web UI search to explore additional possibilities.
+
+https://[redacted].cvpartner.no/api/v1/search?query[0]=javascript&filter_fields[0]=_all&office_ids[]=52726286e79c697aa4000001&office_ids[]=51a6755f6fc6269990000001&office_ids[]=4f6074ee875b52672f000001&office_ids[]=527261e1e79c69b457000001&office_ids[]=52726121e79c6997ab000001&office_ids[]=52725fc2e79c69d555000001&office_ids[]=52726249e79c69c572000001&office_ids[]=52f16e122f274f8aa0000001&office_ids[]=5272614ce79c69e986000001&office_ids[]=51a675d46fc626e7f8000001&office_ids[]=51a675926fc626fead000001&size=3&from=9
 
 masterdata API
 ==============
